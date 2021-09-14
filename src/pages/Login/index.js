@@ -62,7 +62,7 @@ function Login() {
                 localStorage.setItem("auth-token", response.data.successMessageDetails.token);
                 setTimeout(() => {
                     AuthContextData.setLoggedIn();
-                }, 500);
+                }, 250);
             }
         })
         .catch(error => {
@@ -139,52 +139,6 @@ function Login() {
                     </Col>
                 </Row>
             </Container>
-            <Modal show={(modalStatus === 'FORGOT_PASSWORD')} onHide={handleClose}>
-                <form  onSubmit={(e)=>{forgotPassword(e)}}>
-                    <Modal.Header className="border-0">
-                        <Modal.Title>Forgot Password</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        {(validation.validationStatus === true && validation.validationStatusLocation === 'FORGOT_PASSWORD') && <Alert className="mb-0" variant={validation.validationStatusClass}>
-                            {validation.validationStatusClass === 'success' && <HiBadgeCheck/>}
-                            {validation.validationStatusClass === 'danger' && <MdError/>}
-                            &nbsp;&nbsp; {validation.validationStatusMessage}
-                        </Alert>}
-                        <Input type="text" name="forgot_password"  onChangeHandler={onChangeHandler} validationError={validation.forgot_password}  placeholder='Email ID' icon={<BiReset/>}/>
-                    </Modal.Body>
-                    <div className="d-flex p-3 justify-content-between">
-                        <Button variant='white' className="border border-black" onClick={handleClose}>
-                            Cancel
-                        </Button>
-                        <Button onClick={(e)=>{forgotPassword(e)}}>
-                            Confirm
-                        </Button>
-                    </div>
-                </form>
-            </Modal>
-            <Modal show={(modalStatus === 'RESEND_VERIFICATION')} onHide={handleClose}>
-                <form  onSubmit={(e)=>{resendVerification(e)}}>
-                    <Modal.Header className="border-0">
-                        <Modal.Title>Resend Verification Email</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        {(validation.validationStatus === true && validation.validationStatusLocation === 'RESEND_VERIFICATION') && <Alert className="mb-0" variant={validation.validationStatusClass}>
-                            {validation.validationStatusClass === 'success' && <HiBadgeCheck/>}
-                            {validation.validationStatusClass === 'danger' && <MdError/>}
-                            &nbsp;&nbsp; {validation.validationStatusMessage}
-                        </Alert>}
-                        <Input type="text" name="resend_verification"  onChangeHandler={onChangeHandler} validationError={validation.resend_verification}  placeholder='Email ID' icon={<BsFillPersonCheckFill/>}/>
-                    </Modal.Body>
-                    <div className="d-flex p-3 justify-content-between">
-                        <Button variant='white' className="border border-black" onClick={handleClose}>
-                            Cancel
-                        </Button>
-                        <Button type="submit">
-                            Confirm
-                        </Button>
-                    </div>
-                </form>
-            </Modal>
         </div>
         </>
     )
