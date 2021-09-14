@@ -86,7 +86,6 @@ code {
 }
 .column {
   width: 32%;
-  padding-bottom: 100px;
 }
 .column p,
 .column h5,
@@ -97,7 +96,7 @@ code {
 .column-container {
   height: 100%;
   padding: 0px 20px;
-  overflow-y: auto;
+  padding-bottom: 100px;
 }
 .modal,
 .modal-backdrop {
@@ -106,6 +105,7 @@ code {
 @media only screen and (min-width: 1281px) {
   .column-container {
     min-height: 65vh;
+    overflow-y: auto;
   }
 }
 @media only screen and (max-width: 1280px) {
