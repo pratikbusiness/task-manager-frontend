@@ -1,24 +1,19 @@
-import logo from './logo.svg';
+import Routes from './routes/index.js'
 import './App.css';
+
+//Context
+import {PrefixContextProvider} from "./context/PrefixContext.js";
+import {AuthContextProvider} from "./context/AuthContext.js";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <AuthContextProvider>
+        <PrefixContextProvider>
+          <Routes/>
+        </PrefixContextProvider>
+      </AuthContextProvider>
+    </>
   );
 }
 
