@@ -60,7 +60,9 @@ function Login() {
                     password:null
                 });
                 localStorage.setItem("auth-token", response.data.successMessageDetails.token);
-                AuthContextData.setLoggedIn();
+                setTimeout(() => {
+                    AuthContextData.setLoggedIn();
+                }, 500);
             }
         })
         .catch(error => {
@@ -84,122 +86,6 @@ function Login() {
                     validationStatusClass:'danger',
                     validationStatusMessage: error.message,
                     validationStatusLocation: 'LOGIN_FORM',
-                    email: null,
-                    password: null
-                });
-            }
-        });
-    }
-
-    const forgotPassword = async (e) => {
-        e.preventDefault();
-        if (validation.validationStatusClass === 'warning') return;
-        setValidation({
-            validationStatus: true,
-            validationStatusClass:'warning',
-            validationStatusMessage: 'Please wait sending email ...',
-            validationStatusLocation:'FORGOT_PASSWORD',
-            email:null,
-            password:null,
-            resend_verification:null,
-            forgot_password:null
-        });
-        await axios.post(PrefixContextData.prefixUrl + 'user/forgot-password', data)
-        .then(response => {
-            if(response.status === 200){
-                setValidation({
-                    validationStatus: true,
-                    validationStatusClass:'success',
-                    validationStatusMessage: response.data.successMessage,
-                    validationStatusLocation:'FORGOT_PASSWORD',
-                    email:null,
-                    password:null,
-                    resend_verification:null,
-                    forgot_password:null
-                });
-            }
-        })
-        .catch(error => {
-            if(error.response !== undefined && error.response.data !== undefined && error.response.data.errorMessageDetails !== undefined ){
-                let errorDetails = {};
-                error.response.data.errorMessageDetails.forEach((e)=>{
-                    errorDetails[e.param] = e.msg;
-                })
-                setValidation({
-                    validationStatus: true,
-                    validationStatusClass:'danger',
-                    validationStatusMessage: error.response.data.errorMessage,
-                    validationStatusLocation:'FORGOT_PASSWORD',
-                    email:(errorDetails.email !== undefined) ? errorDetails.email : null,
-                    password:(errorDetails.password !== undefined) ? errorDetails.password : null,
-                    resend_verification:(errorDetails.resend_verification !== undefined) ? errorDetails.resend_verification : null,
-                    forgot_password:(errorDetails.forgot_password !== undefined) ? errorDetails.forgot_password : null
-                });
-            }
-            else{
-                setValidation({
-                    validationStatus: true,
-                    validationStatusClass:'danger',
-                    validationStatusMessage: error.message,
-                    validationStatusLocation: 'FORGOT_PASSWORD',
-                    email: null,
-                    password: null
-                });
-            }
-        });
-    }
-
-    const resendVerification = async (e) => {
-        e.preventDefault();
-        if (validation.validationStatusClass === 'warning') return;
-        setValidation({
-            validationStatus: true,
-            validationStatusClass:'warning',
-            validationStatusMessage: 'Please wait sending email ...',
-            validationStatusLocation:'RESEND_VERIFICATION',
-            email:null,
-            password:null,
-            resend_verification:null,
-            forgot_password:null
-        });
-        await axios.post(PrefixContextData.prefixUrl + 'user/resend-verification', data)
-        .then(response => {
-            if(response.status === 200){
-                setValidation({
-                    validationStatus: true,
-                    validationStatusClass:'success',
-                    validationStatusMessage: response.data.successMessage,
-                    validationStatusLocation:'RESEND_VERIFICATION',
-                    email:null,
-                    password:null,
-                    resend_verification:null,
-                    forgot_password:null
-                });
-            }
-        })
-        .catch(error => {
-            if(error.response !== undefined && error.response.data !== undefined && error.response.data.errorMessageDetails !== undefined ){
-                let errorDetails = {};
-                error.response.data.errorMessageDetails.forEach((e)=>{
-                    errorDetails[e.param] = e.msg;
-                })
-                setValidation({
-                    validationStatus: true,
-                    validationStatusClass:'danger',
-                    validationStatusMessage: error.response.data.errorMessage,
-                    validationStatusLocation:'RESEND_VERIFICATION',
-                    email:(errorDetails.email !== undefined) ? errorDetails.email : null,
-                    password:(errorDetails.password !== undefined) ? errorDetails.password : null,
-                    resend_verification:(errorDetails.resend_verification !== undefined) ? errorDetails.resend_verification : null,
-                    forgot_password:(errorDetails.forgot_password !== undefined) ? errorDetails.forgot_password : null
-                });
-            }
-            else{
-                setValidation({
-                    validationStatus: true,
-                    validationStatusClass:'danger',
-                    validationStatusMessage: error.message,
-                    validationStatusLocation: 'RESEND_VERIFICATION',
                     email: null,
                     password: null
                 });
