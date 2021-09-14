@@ -50,17 +50,16 @@ function TaskManager() {
             axios.post(PrefixContextData.prefixUrl + 'data/tasks/sync', newData)
             .then(response => {
                 if(response.status === 200){
-                    console.log('Data Synced Successfully')
+                    setValidation({
+                        validationStatus: '',
+                        validationStatusClass:'',
+                        validationStatusMessage: '',
+                        validationStatusLocation: '',
+                        title:null,
+                        desc:null,
+                        taskstatus:null,
+                    });
                 }
-                setValidation({
-                    validationStatus: '',
-                    validationStatusClass:'',
-                    validationStatusMessage: '',
-                    validationStatusLocation: '',
-                    title:null,
-                    desc:null,
-                    taskstatus:null,
-                });
             })
             .catch(error => {
                 if(error.response !== undefined && error.response.data !== undefined){

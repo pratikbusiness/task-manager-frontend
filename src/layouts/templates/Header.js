@@ -18,7 +18,7 @@ function LoggedInNavTabs(props){
     const AuthContextData = useContext(AuthContext);
     return (<>
         <Link onClick={props.closeSidebar} to="/task-manager" className={'mx-3'+((props.href === 'task-manager')?' active':'')}>Task Manager</Link>
-        <p href="#" onClick={()=>AuthContextData.manualLogout()} className="cursor-pointer d-inline-block m-0 p-0 py-2 px-3 mx-3" style={{padding:'20px'}}>Logout</p>
+        <p href="#" onClick={()=>AuthContextData.manualLogout()} className="sm-light cursor-pointer d-inline-block m-0 p-0 py-2 px-3 mx-3" style={{padding:'20px'}}>Logout</p>
     </>);
 }
 

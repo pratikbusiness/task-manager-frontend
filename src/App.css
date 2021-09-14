@@ -112,6 +112,10 @@ code {
   .column {
     width: 100% !important;
   }
+  .sm-light {
+    color: white;
+    padding: 20px 40px !important;
+  }
 }
 @media only screen and (max-width: 767px) {
   .column {
