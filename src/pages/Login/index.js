@@ -1,10 +1,8 @@
 import React,{useState,useContext,useEffect} from 'react'
 import Input from '../../components/Input/index.js'
-import {Row,Col, Container, Alert,Modal,Button} from 'react-bootstrap'
+import {Row,Col, Container, Alert} from 'react-bootstrap'
 import {HiMail} from 'react-icons/hi'
 import {RiLockPasswordFill} from 'react-icons/ri'
-import {BiReset} from 'react-icons/bi'
-import {BsFillPersonCheckFill} from 'react-icons/bs'
 import {MdError} from 'react-icons/md'
 import {HiBadgeCheck} from 'react-icons/hi'
 import {Link} from 'react-router-dom'
@@ -14,7 +12,6 @@ import axios from 'axios'
 
 function Login() {
 
-    const [modalStatus, setmodalStatus] = useState('')
     const AuthContextData = useContext(AuthContext);
     const PrefixContextData = useContext(PrefixContext);
     const defaultValidation = {
@@ -101,14 +98,10 @@ function Login() {
         setdata(newData);
     }
 
-    const handleClose = (e) =>{
-        setmodalStatus('')
-    }
-
     useEffect(() => {
         setValidation(defaultValidation)
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [modalStatus])
+    }, [])
 
     return (
         <>
