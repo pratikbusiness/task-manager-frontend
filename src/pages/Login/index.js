@@ -59,7 +59,7 @@ function Login() {
                 localStorage.setItem("auth-token", response.data.successMessageDetails.token);
                 setTimeout(() => {
                     AuthContextData.setLoggedIn();
-                }, 250);
+                }, 1000);
             }
         })
         .catch(error => {
