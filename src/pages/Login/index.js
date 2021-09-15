@@ -57,9 +57,7 @@ function Login() {
                     password:null
                 });
                 localStorage.setItem("auth-token", response.data.successMessageDetails.token);
-                setTimeout(() => {
-                    AuthContextData.setLoggedIn();
-                }, 1000);
+                AuthContextData.setLoggedIn();
             }
         })
         .catch(error => {

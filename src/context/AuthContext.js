@@ -9,6 +9,7 @@ function AuthContextProvider(props) {
     const [login, setlogin] = useState()
     const setLoggedIn = () => {
         setlogin('LOGGED_IN');
+        setHeaders();
     }
     const setLoggedOut = () => {
         setlogin('LOGGED_OUT');
@@ -45,7 +46,7 @@ function AuthContextProvider(props) {
     
     const setHeaders = () => {
         let token = localStorage.getItem('auth-token');
-        axios.defaults.headers.common['Authorization'] = token;
+        axios.defaults.headers.common['authorization'] = token;
     }
 
     useEffect(checkLoginStatus,[])
