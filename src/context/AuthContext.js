@@ -8,8 +8,8 @@ function AuthContextProvider(props) {
     
     const [login, setlogin] = useState()
     const setLoggedIn = () => {
-        setlogin('LOGGED_IN');
         setHeaders();
+        setlogin('LOGGED_IN');
     }
     const setLoggedOut = () => {
         setlogin('LOGGED_OUT');
